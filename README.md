@@ -1,2 +1,2 @@
 # KotlinMVPExample
-Simple MVP + RxKotlin + Dagger2 with Kotlin. 
+Simple MVP + RxKotlin + Dagger2 + Retrofit2 example
