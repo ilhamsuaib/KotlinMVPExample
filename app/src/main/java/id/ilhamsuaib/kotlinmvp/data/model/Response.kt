@@ -14,7 +14,7 @@ data class Response(@SerializedName("name")
                     val error: String? = null,
                     @SerializedName("clubs")
                     @Expose
-                    val clubs: List<Club>) : Parcelable
+                    val clubs: List<Club>? = null) : Parcelable
 
 @Parcelize
 data class Club(@SerializedName("key")
