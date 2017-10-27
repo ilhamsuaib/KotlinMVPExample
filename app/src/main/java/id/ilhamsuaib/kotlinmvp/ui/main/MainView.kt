@@ -8,5 +8,5 @@ import id.ilhamsuaib.kotlinmvp.ui.base.BaseView
  */
 interface MainView : BaseView{
     fun showMessage(s: String?)
-    fun displayProvinsi(club: List<Club>)
+    fun displayClub(club: List<Club>)
 }

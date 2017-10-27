@@ -32,8 +32,8 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
         presenter.bind(this)
 
-        recProvinsi.layoutManager = LinearLayoutManager(this)
-        recProvinsi.adapter = clubAdapter
+        recClub.layoutManager = LinearLayoutManager(this)
+        recClub.adapter = clubAdapter
 
         presenter.getClubs()
     }
@@ -47,19 +47,15 @@ class MainActivity : BaseActivity(), MainView {
         presenter.destroy()
     }
 
-    override fun showProgress() {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    override fun hideProgress() {
-        progressBar.visibility = View.GONE
+    override fun showProgress(show: Boolean) {
+        runOnUiThread { progressBar.visibility = if (show) View.VISIBLE else View.GONE }
     }
 
     override fun showMessage(s: String?) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
 
-    override fun displayProvinsi(club: List<Club>) {
+    override fun displayClub(club: List<Club>) {
         Log.d(TAG, "club list ${Gson().toJsonTree(club)}")
         clubAdapter.clearItem()
         clubAdapter.addItems(club)

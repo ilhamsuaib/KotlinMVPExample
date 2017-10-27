@@ -15,14 +15,13 @@ abstract class BaseListAdapter<T: Parcelable> : RecyclerView.Adapter<BaseListAda
     abstract fun getListItemView(context: Context) : BaseViewHolder<T>
 
     fun clearItem(){
-        val itemCount = items.size
         items.clear()
-        notifyItemRangeRemoved(0, itemCount)
+        notifyItemRangeRemoved(0, items.size)
     }
 
-    fun addItems(itemToAdd: List<T>){
-        items.addAll(itemToAdd)
-        notifyItemRangeInserted(0, itemToAdd.size)
+    fun addItems(itemsToAdd: List<T>){
+        items.addAll(itemsToAdd)
+        notifyItemRangeInserted(0, itemsToAdd.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = ViewHolder(getListItemView(parent?.context!!))

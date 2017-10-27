@@ -12,11 +12,11 @@ import javax.inject.Inject
 class MainPresenter @Inject constructor(private val clubRepository: ClubRepository) : BasePresenter<MainView>(){
 
     fun getClubs(){
-        view?.showProgress()
+        view?.showProgress(true)
         disposables.add(clubRepository.getClubs()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnEach { view?.hideProgress() }
-                .subscribe({ view?.displayProvinsi(it) }, { it.printStackTrace()}))
+                .doOnEach { view?.showProgress(false) }
+                .subscribe({ view?.displayClub(it) }, { it.printStackTrace()}))
     }
 }
