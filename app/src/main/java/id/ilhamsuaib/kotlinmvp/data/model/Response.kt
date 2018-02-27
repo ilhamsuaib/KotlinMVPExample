@@ -8,21 +8,11 @@ import kotlinx.android.parcel.Parcelize
 /**
  * Created by ilham on 10/13/17.
  */
-@Parcelize
-data class Response(@SerializedName("name")
-                    @Expose
-                    val error: String? = null,
-                    @SerializedName("clubs")
-                    @Expose
-                    val clubs: List<Club>? = null) : Parcelable
 
-@Parcelize
-data class Club(@SerializedName("key")
-                @Expose
-                val key: String? = null,
-                @SerializedName("name")
-                @Expose
-                val name: String? = null,
-                @SerializedName("code")
-                @Expose
-                val code: String? = null) : Parcelable
+data class Response(
+
+        @field:SerializedName("name")
+        val error: String? = "",
+
+        @field:SerializedName("clubs")
+        val clubs: List<ClubModel>? = null)

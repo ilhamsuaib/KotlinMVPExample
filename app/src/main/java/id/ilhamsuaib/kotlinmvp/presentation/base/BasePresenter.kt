@@ -1,4 +1,4 @@
-package id.ilhamsuaib.kotlinmvp.ui.base
+package id.ilhamsuaib.kotlinmvp.presentation.base
 
 import io.reactivex.disposables.CompositeDisposable
 

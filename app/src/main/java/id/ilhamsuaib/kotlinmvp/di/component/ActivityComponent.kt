@@ -1,17 +1,16 @@
 package id.ilhamsuaib.kotlinmvp.di.component
 
-import dagger.Component
 import dagger.Subcomponent
 import id.ilhamsuaib.kotlinmvp.di.module.ActivityModule
 import id.ilhamsuaib.kotlinmvp.di.scope.PerActivity
-import id.ilhamsuaib.kotlinmvp.ui.main.MainActivity
-import javax.inject.Singleton
+import id.ilhamsuaib.kotlinmvp.presentation.ui.main.MainActivity
 
 /**
  * Created by ilham on 10/12/17.
  */
+
 @PerActivity
-@Subcomponent(modules = arrayOf(ActivityModule::class))
+@Subcomponent(modules = [(ActivityModule::class)])
 interface ActivityComponent {
 
     @Subcomponent.Builder

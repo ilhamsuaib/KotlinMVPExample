@@ -1,4 +1,4 @@
-package id.ilhamsuaib.kotlinmvp.ui.base.adapter
+package id.ilhamsuaib.kotlinmvp.presentation.base.adapter
 
 import android.content.Context
 import android.os.Parcelable

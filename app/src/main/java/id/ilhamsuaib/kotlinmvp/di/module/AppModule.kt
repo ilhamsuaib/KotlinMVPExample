@@ -9,6 +9,7 @@ import dagger.Provides
 import id.ilhamsuaib.kotlinmvp.BuildConfig
 import id.ilhamsuaib.kotlinmvp.data.ApiService
 import id.ilhamsuaib.kotlinmvp.di.scope.ApplicationContext
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,8 +20,9 @@ import javax.inject.Singleton
 /**
  * Created by ilham on 10/12/17.
  */
+
 @Module
-class AppModule(val app: Application) {
+class AppModule(private val app: Application) {
 
     @Provides
     fun provideApplication() : Application = app
@@ -31,12 +33,7 @@ class AppModule(val app: Application) {
 
     @Provides
     @Singleton
-    fun provideGson(): Gson {
-        val gson = GsonBuilder()
-                .setDateFormat("yyyy-MM-dd")
-                .create()
-        return gson
-    }
+    fun provideGson(): Gson = GsonBuilder().create()
 
     @Provides
     @Singleton
@@ -46,8 +43,8 @@ class AppModule(val app: Application) {
 
         val okHttp = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-                .build()
-        return okHttp
+
+        return okHttp.build()
     }
 
     @Provides
@@ -55,11 +52,11 @@ class AppModule(val app: Application) {
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
-                .build()
-        return retrofit
+
+        return retrofit.build()
     }
 
     @Provides

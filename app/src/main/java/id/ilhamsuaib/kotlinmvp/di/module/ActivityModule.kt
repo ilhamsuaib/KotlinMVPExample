@@ -12,7 +12,7 @@ import javax.inject.Singleton
  * Created by ilham on 10/12/17.
  */
 @Module
-class ActivityModule(val activity: Activity) {
+class ActivityModule(private val activity: Activity) {
 
     @Provides
     @PerActivity
