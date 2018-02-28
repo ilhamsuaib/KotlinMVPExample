@@ -12,5 +12,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [(AppModule::class), (DataModule::class)])
 interface AppComponent {
+
     fun activityComponent(): ActivityComponent.Builder
 }
