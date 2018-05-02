@@ -5,8 +5,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import id.ilhamsuaib.kotlinmvp.di.scope.ActivityContext
-import id.ilhamsuaib.kotlinmvp.di.scope.PerActivity
-import javax.inject.Singleton
+import id.ilhamsuaib.kotlinmvp.di.scope.ActivityScope
 
 /**
  * Created by ilham on 10/12/17.
@@ -15,10 +14,10 @@ import javax.inject.Singleton
 class ActivityModule(private val activity: Activity) {
 
     @Provides
-    @PerActivity
+    @ActivityScope
     fun provideActivity() : Activity = activity
 
     @Provides
     @ActivityContext
-    fun provideActivityContex() : Context = activity
+    fun provideActivityContext() : Context = activity
 }

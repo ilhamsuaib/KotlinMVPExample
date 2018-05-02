@@ -9,11 +9,10 @@ import com.google.gson.Gson
 import id.ilhamsuaib.kotlinmvp.R
 import id.ilhamsuaib.kotlinmvp.di.component.ActivityComponent
 import id.ilhamsuaib.kotlinmvp.presentation.base.BaseActivity
-import id.ilhamsuaib.kotlinmvp.presentation.ui.main.adapter.ClubAdapter
 import id.ilhamsuaib.kotlinmvp.presentation.model.Club
+import id.ilhamsuaib.kotlinmvp.presentation.ui.main.adapter.ClubAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
-import id.ilhamsuaib.kotlinmvp.utilities.TAG
 
 /**
  * Created by ilham on 10/12/17.
@@ -21,10 +20,12 @@ import id.ilhamsuaib.kotlinmvp.utilities.TAG
 
 class MainActivity : BaseActivity(), MainView {
 
-    private val tag = TAG(MainActivity::class.java)
+    private val tag = this.javaClass.simpleName
 
-    @Inject lateinit var presenter: MainPresenter
-    @Inject lateinit var clubAdapter: ClubAdapter
+    @Inject
+    lateinit var presenter: MainPresenter
+    @Inject
+    lateinit var clubAdapter: ClubAdapter
 
     override fun injectModule(activityComponent: ActivityComponent) {
         activityComponent.inject(this)

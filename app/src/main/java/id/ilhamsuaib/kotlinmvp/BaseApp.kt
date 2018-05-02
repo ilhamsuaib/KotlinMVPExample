@@ -17,8 +17,4 @@ class BaseApp : Application() {
                 .appModule(AppModule(this))
                 .build()
     }
-
-    companion object {
-        fun get(context: Context): BaseApp = context.applicationContext as BaseApp
-    }
 }

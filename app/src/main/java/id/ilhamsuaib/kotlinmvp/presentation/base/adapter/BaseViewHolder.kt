@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 /**
  * Created by ilham on 10/14/17.
  */
+
 abstract class BaseViewHolder<T: Parcelable> : RelativeLayout {
 
     constructor(context: Context?) : super(context){

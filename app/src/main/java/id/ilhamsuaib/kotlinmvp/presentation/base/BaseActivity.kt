@@ -9,12 +9,13 @@ import id.ilhamsuaib.kotlinmvp.di.module.ActivityModule
 /**
  * Created by ilham on 10/12/17.
  */
+
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val activityComponent = BaseApp.get(this)
+        val activityComponent = (application as BaseApp)
                 .appComponent
                 .activityComponent()
                 .activityModule(ActivityModule(this))

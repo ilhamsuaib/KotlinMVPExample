@@ -16,7 +16,7 @@ class ClubRepositoryImpl @Inject constructor(private val service: ApiService) : 
     override fun getClubs(): Flowable<List<Club>> {
         return service.getClubs()
                 .flatMap { Flowable.fromIterable(it.clubs) }
-                .map { it.toViewModel() }
+                .map { it.transform() }
                 .toList()
                 .toFlowable()
     }

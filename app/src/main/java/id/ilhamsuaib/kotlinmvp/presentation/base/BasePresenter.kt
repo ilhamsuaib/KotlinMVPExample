@@ -5,6 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 /**
  * Created by ilham on 10/12/17.
  */
+
 open class BasePresenter<T: BaseView> {
 
     protected val disposables = CompositeDisposable()
@@ -14,13 +15,13 @@ open class BasePresenter<T: BaseView> {
         this.view = view
     }
 
-    fun unbind(){
+    private fun unbind(){
         this.view = null
     }
 
-    fun destroy(){
-        disposables.clear()
-        if (!disposables.isDisposed) disposables.dispose()
+    fun destroy() {
+        if (!disposables.isDisposed)
+            disposables.dispose()
         unbind()
     }
 }

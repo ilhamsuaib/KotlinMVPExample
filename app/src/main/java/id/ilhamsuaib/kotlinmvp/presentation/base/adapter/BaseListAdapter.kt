@@ -10,7 +10,7 @@ import android.view.ViewGroup
  */
 abstract class BaseListAdapter<T: Parcelable> : RecyclerView.Adapter<BaseListAdapter<T>.ViewHolder>() {
 
-    protected var items = ArrayList<T>()
+    private var items = ArrayList<T>()
 
     abstract fun getListItemView(context: Context) : BaseViewHolder<T>
 
@@ -24,9 +24,9 @@ abstract class BaseListAdapter<T: Parcelable> : RecyclerView.Adapter<BaseListAda
         notifyItemRangeInserted(0, itemsToAdd.size)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = ViewHolder(getListItemView(parent?.context!!))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(getListItemView(parent.context))
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) = holder?.view?.bind(items[position])!!
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.view.bind(items[position])
 
     override fun getItemCount(): Int = items.size
 

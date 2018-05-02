@@ -18,5 +18,9 @@ data class ClubModel(
         @field:SerializedName("code")
         private val code: String? = "") {
 
-        fun toViewModel(): Club = Club(key = this.key, name = this.name, code = this.code)
+        fun transform(): Club = Club(
+                key = this.key,
+                name = this.name,
+                code = this.code
+        )
 }
