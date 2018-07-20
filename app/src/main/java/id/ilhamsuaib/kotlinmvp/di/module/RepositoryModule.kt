@@ -7,12 +7,14 @@ import id.ilhamsuaib.kotlinmvp.data.repository.ClubRepositoryImpl
 import javax.inject.Singleton
 
 /**
- * Created by ilham on 10/13/17.
+ * Created by @ilhamsuaib on 7/21/18.
+ * github.com/ilhamsuaib
  */
+
 @Module
-class DataModule {
+class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideClubManager(clubManagerImpl: ClubRepositoryImpl) : ClubRepository = clubManagerImpl
+    fun provideRepository(repositoryImpl: ClubRepositoryImpl): ClubRepository = repositoryImpl
 }

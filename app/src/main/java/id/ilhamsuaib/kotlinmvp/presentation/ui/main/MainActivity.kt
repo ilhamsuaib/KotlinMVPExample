@@ -1,14 +1,14 @@
 package id.ilhamsuaib.kotlinmvp.presentation.ui.main
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
+import dagger.android.AndroidInjection
 import id.ilhamsuaib.kotlinmvp.R
-import id.ilhamsuaib.kotlinmvp.di.component.ActivityComponent
-import id.ilhamsuaib.kotlinmvp.presentation.base.BaseActivity
 import id.ilhamsuaib.kotlinmvp.presentation.model.Club
 import id.ilhamsuaib.kotlinmvp.presentation.ui.main.adapter.ClubAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,20 +18,17 @@ import javax.inject.Inject
  * Created by ilham on 10/12/17.
  */
 
-class MainActivity : BaseActivity(), MainView {
+class MainActivity : AppCompatActivity(), MainView {
 
-    private val tag = this.javaClass.simpleName
+    private val tag = "MainActivity"
 
     @Inject
     lateinit var presenter: MainPresenter
     @Inject
     lateinit var clubAdapter: ClubAdapter
 
-    override fun injectModule(activityComponent: ActivityComponent) {
-        activityComponent.inject(this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.bind(this)

@@ -1,19 +1,17 @@
 package id.ilhamsuaib.kotlinmvp.presentation.ui.main.adapter
 
 import android.content.Context
-import id.ilhamsuaib.kotlinmvp.di.scope.ActivityScope
+import id.ilhamsuaib.kotlinmvp.R
 import id.ilhamsuaib.kotlinmvp.presentation.base.adapter.BaseListAdapter
 import id.ilhamsuaib.kotlinmvp.presentation.base.adapter.BaseViewHolder
-import javax.inject.Inject
-import id.ilhamsuaib.kotlinmvp.R
 import id.ilhamsuaib.kotlinmvp.presentation.model.Club
 import kotlinx.android.synthetic.main.adapter_club.view.*
+import javax.inject.Inject
 
 /**
  * Created by ilham on 10/14/17.
  */
 
-@ActivityScope
 class ClubAdapter @Inject constructor() : BaseListAdapter<Club>() {
 
     override fun getListItemView(context: Context): BaseViewHolder<Club> = ViewHolder(context)

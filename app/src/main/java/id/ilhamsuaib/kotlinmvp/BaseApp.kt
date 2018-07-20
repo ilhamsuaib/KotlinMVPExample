@@ -1,20 +1,29 @@
 package id.ilhamsuaib.kotlinmvp
 
+import android.app.Activity
 import android.app.Application
-import android.content.Context
-import id.ilhamsuaib.kotlinmvp.di.component.AppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import id.ilhamsuaib.kotlinmvp.di.component.DaggerAppComponent
-import id.ilhamsuaib.kotlinmvp.di.module.AppModule
+import javax.inject.Inject
 
 /**
  * Created by ilham on 10/12/17.
  */
 
-class BaseApp : Application() {
+class BaseApp : Application(), HasActivityInjector {
 
-    val appComponent: AppComponent by lazy {
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+
+    override fun onCreate() {
+        super.onCreate()
         DaggerAppComponent.builder()
-                .appModule(AppModule(this))
+                .application(this)
                 .build()
+                .inject(this)
     }
 }

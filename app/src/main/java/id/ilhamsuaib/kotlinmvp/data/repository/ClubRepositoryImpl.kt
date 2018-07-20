@@ -4,14 +4,13 @@ import id.ilhamsuaib.kotlinmvp.data.ApiService
 import id.ilhamsuaib.kotlinmvp.presentation.model.Club
 import io.reactivex.Flowable
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
- * Created by ilham on 10/13/17.
+ * Created by @ilhamsuaib on 7/21/18.
+ * github.com/ilhamsuaib
  */
 
-@Singleton
-class ClubRepositoryImpl @Inject constructor(private val service: ApiService) : ClubRepository {
+class ClubRepositoryImpl @Inject constructor(private val service: ApiService): ClubRepository {
 
     override fun getClubs(): Flowable<List<Club>> {
         return service.getClubs()

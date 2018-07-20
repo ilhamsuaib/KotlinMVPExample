@@ -2,7 +2,7 @@ ext {
     versions = [
             support         : '27.1.1',
             constraint      : '1.1.0',
-            dagger2         : '2.15',
+            dagger2         : '2.16',
             rxKotlin        : '2.2.0',
             rxAndroid       : '2.0.2',
             retrofit2       : '2.4.0',
