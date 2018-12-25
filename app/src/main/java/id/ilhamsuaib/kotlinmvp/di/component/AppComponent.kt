@@ -2,10 +2,11 @@ package id.ilhamsuaib.kotlinmvp.di.component
 
 import android.app.Application
 import dagger.BindsInstance
-import id.ilhamsuaib.kotlinmvp.di.module.AppModule
 import dagger.Component
+import dagger.android.support.AndroidSupportInjectionModule
 import id.ilhamsuaib.kotlinmvp.BaseApp
 import id.ilhamsuaib.kotlinmvp.di.module.ActivityBuilderModule
+import id.ilhamsuaib.kotlinmvp.di.module.AppModule
 import id.ilhamsuaib.kotlinmvp.di.module.NetworkModule
 import id.ilhamsuaib.kotlinmvp.di.module.RepositoryModule
 import javax.inject.Singleton
@@ -16,6 +17,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
+    AndroidSupportInjectionModule::class,
     AppModule::class,
     NetworkModule::class,
     ActivityBuilderModule::class,

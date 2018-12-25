@@ -24,13 +24,13 @@ import javax.inject.Singleton
  */
 
 @Module
-class NetworkModule {
+object NetworkModule {
 
-    companion object {
-        const val DEFAULT_TIMEOUT = 30L
-        const val CACHE_CONTROL_HEADER = "Cache-Control"
-    }
+    private const val DEFAULT_TIMEOUT = 30L
+    private const val CACHE_CONTROL_HEADER = "Cache-Control"
 
+    @JvmStatic
+    @Singleton
     @Provides
     fun provideOkHttpClient(app: Application): OkHttpClient {
 
@@ -66,6 +66,8 @@ class NetworkModule {
                 .build()
     }
 
+    @JvmStatic
+    @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 
@@ -77,7 +79,8 @@ class NetworkModule {
                 .build()
     }
 
+    @JvmStatic
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit) : ApiService = retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }

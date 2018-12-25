@@ -15,9 +15,7 @@ import javax.inject.Inject
 class BaseApp : Application(), HasActivityInjector {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
-
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
@@ -26,4 +24,6 @@ class BaseApp : Application(), HasActivityInjector {
                 .build()
                 .inject(this)
     }
+
+    override fun activityInjector(): AndroidInjector<Activity> = activityInjector
 }

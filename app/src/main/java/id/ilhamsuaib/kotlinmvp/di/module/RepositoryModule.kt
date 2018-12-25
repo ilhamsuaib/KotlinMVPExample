@@ -12,8 +12,9 @@ import javax.inject.Singleton
  */
 
 @Module
-class RepositoryModule {
+object RepositoryModule {
 
+    @JvmStatic
     @Provides
     @Singleton
     fun provideRepository(repositoryImpl: ClubRepositoryImpl): ClubRepository = repositoryImpl
